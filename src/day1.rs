@@ -18,6 +18,20 @@ fn part1(entries: &[i32]) -> i32 {
     0
 }
 
+#[aoc(day1, part2)]
+fn part2(entries: &[i32]) -> i32 {
+    for v1 in entries {
+        for v2 in entries {
+            for v3 in entries {
+                if v1 + v2 + v3 == 2020 {
+                    return v1 * v2 * v3;
+                }
+            }
+        }
+    }
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -25,5 +39,6 @@ mod tests {
     #[test]
     fn part1_example() {
         assert_eq!(part1(&[1721, 979, 366, 299, 675, 1456]), 514579);
+        assert_eq!(part2(&[1721, 979, 366, 299, 675, 1456]), 241861950);
     }
 }
