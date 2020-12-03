@@ -39,6 +39,10 @@ mod tests {
     #[test]
     fn part1_example() {
         assert_eq!(part1(&[1721, 979, 366, 299, 675, 1456]), 514579);
+    }
+
+    #[test]
+    fn part2_example() {
         assert_eq!(part2(&[1721, 979, 366, 299, 675, 1456]), 241861950);
     }
 }
