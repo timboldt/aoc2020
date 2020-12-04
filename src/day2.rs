@@ -44,9 +44,18 @@ fn part1(passwords: &[Password]) -> i32 {
     good
 }
 
-// #[aoc(day2, part2)]
-// fn part2(entries: &[i32]) -> i32 {
-// }
+#[aoc(day2, part2)]
+fn part2(passwords: &[Password]) -> i32 {
+    let mut good = 0;
+    for pwd in passwords {
+        let x1 = pwd.p.chars().nth(pwd.n1-1).unwrap() == pwd.c;
+        let x2 = pwd.p.chars().nth(pwd.n2-1).unwrap() == pwd.c;
+        if (x1 && !x2) || (!x1 && x2) {
+            good = good + 1;
+        }
+    }
+    good
+}
 
 #[cfg(test)]
 mod tests {
@@ -60,22 +69,49 @@ mod tests {
                     n1: 1,
                     n2: 3,
                     c: 'a',
-                    p: "abcde"
+                    p: "abcde".to_string()
                 },
                 Password {
                     n1: 1,
                     n2: 3,
                     c: 'b',
-                    p: "cdefg"
+                    p: "cdefg".to_string()
                 },
                 Password {
                     n1: 2,
                     n2: 9,
                     c: 'c',
-                    p: "ccccccccc"
+                    p: "ccccccccc".to_string()
                 },
             ]),
             2
+        );
+    }
+
+    #[test]
+    fn part2_example() {
+        assert_eq!(
+            part2(&[
+                Password {
+                    n1: 1,
+                    n2: 3,
+                    c: 'a',
+                    p: "abcde".to_string()
+                },
+                Password {
+                    n1: 1,
+                    n2: 3,
+                    c: 'b',
+                    p: "cdefg".to_string()
+                },
+                Password {
+                    n1: 2,
+                    n2: 9,
+                    c: 'c',
+                    p: "ccccccccc".to_string()
+                },
+            ]),
+            1
         );
     }
 }
