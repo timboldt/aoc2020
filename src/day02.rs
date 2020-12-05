@@ -1,6 +1,6 @@
 use aoc_runner_derive::{aoc, aoc_generator};
-use std::num::ParseIntError;
 use regex::Regex;
+use std::num::ParseIntError;
 
 #[derive(Debug)]
 struct Password {
@@ -12,10 +12,7 @@ struct Password {
 
 fn parse_line(line: &str) -> Result<Password, ParseIntError> {
     lazy_static! {
-        static ref RE: Regex = Regex::new(
-            r"^(\d{1,2})-(\d{1,2}) ([a-z]): ([a-z]+)$"
-        )
-        .unwrap();
+        static ref RE: Regex = Regex::new(r"^(\d{1,2})-(\d{1,2}) ([a-z]): ([a-z]+)$").unwrap();
     }
     let caps = RE.captures(line).unwrap();
 
@@ -48,8 +45,8 @@ fn part1(passwords: &[Password]) -> i32 {
 fn part2(passwords: &[Password]) -> i32 {
     let mut good = 0;
     for pwd in passwords {
-        let x1 = pwd.p.chars().nth(pwd.n1-1).unwrap() == pwd.c;
-        let x2 = pwd.p.chars().nth(pwd.n2-1).unwrap() == pwd.c;
+        let x1 = pwd.p.chars().nth(pwd.n1 - 1).unwrap() == pwd.c;
+        let x2 = pwd.p.chars().nth(pwd.n2 - 1).unwrap() == pwd.c;
         if (x1 && !x2) || (!x1 && x2) {
             good = good + 1;
         }
