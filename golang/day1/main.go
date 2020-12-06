@@ -26,8 +26,9 @@ func ReadInts(r io.Reader) ([]int, error) {
 }
 
 func part1(data []int) int {
-	for _, i := range data {
-		for _, j := range data {
+	// This algorithm is O(N^2/2), and there are ways to solve this in O(N), but this solution is easier to read.
+	for idx1, i := range data {
+		for _, j := range data[idx1+1:] {
 			if i+j == 2020 {
 				return i * j
 			}
@@ -37,7 +38,16 @@ func part1(data []int) int {
 }
 
 func part2(data []int) int {
-	return 42
+	for idx1, i := range data {
+		for idx2, j := range data[idx1+1:] {
+			for _, k := range data[idx2+1:] {
+				if i+j+k == 2020 {
+					return i * j * k
+				}
+			}
+		}
+	}
+	panic("Oops!")
 }
 
 func main() {
