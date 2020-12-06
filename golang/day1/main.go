@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"os"
 	"strconv"
 )
 
@@ -24,6 +25,33 @@ func ReadInts(r io.Reader) ([]int, error) {
 	return result, scanner.Err()
 }
 
+func part1(data []int) int {
+	for _, i := range data {
+		for _, j := range data {
+			if i+j == 2020 {
+				return i * j
+			}
+		}
+	}
+	panic("Oops!")
+}
+
+func part2(data []int) int {
+	return 42
+}
+
 func main() {
-	fmt.Println("hi")
+	// Assumes `go run aoc2020/day1` from the module-level directory.
+	infile, err := os.Open("day1/input.txt")
+	if err != nil {
+		panic("Cannot find input file.")
+	}
+	data, err := ReadInts(infile)
+	if err != nil {
+		panic("Invalid input file.")
+	}
+	result1 := part1(data)
+	fmt.Printf("Day 1 Part 1: %d\n", result1)
+	result2 := part2(data)
+	fmt.Printf("Day 1 Part 2: %d\n", result2)
 }
