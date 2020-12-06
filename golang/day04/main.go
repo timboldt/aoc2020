@@ -65,9 +65,11 @@ func parseInput(r io.Reader) ([]*passport, error) {
 	var result []*passport
 	var kv map[string]string
 	for scanner.Scan() {
-		if scanner.Text() == "" && kv != nil {
-			result = append(result, &passport{kv: kv})
-			kv = nil
+		if scanner.Text() == "" {
+			if kv != nil {
+				result = append(result, &passport{kv: kv})
+				kv = nil
+			}
 			continue
 		}
 		if kv == nil {
