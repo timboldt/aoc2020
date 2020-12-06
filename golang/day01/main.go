@@ -51,8 +51,8 @@ func part2(data []int) int {
 }
 
 func main() {
-	// Assumes `go run aoc2020/day1` from the module-level directory.
-	infile, err := os.Open("day1/input.txt")
+	// Assumes `go run aoc2020/day01` from the module-level directory.
+	infile, err := os.Open("day01/input.txt")
 	if err != nil {
 		panic("Cannot find input file.")
 	}
