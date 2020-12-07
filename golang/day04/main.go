@@ -19,12 +19,12 @@ var (
 
 func init() {
 	validRegex = map[string]*regexp.Regexp{
-		"byr": regexp.MustCompile(`^19[2-9][0-9]|200[0-2]$`),
+		"byr": regexp.MustCompile(`^(19[2-9][0-9]|200[0-2])$`),
 		"iyr": regexp.MustCompile(`^20(1[0-9]|20)$`),
 		"eyr": regexp.MustCompile(`^20(2[0-9]|30)$`),
-		"hgt": regexp.MustCompile(`^1([5-8][0-9]|9[0-3])cm|(59|6[0-9]|7[0-6])in$`),
+		"hgt": regexp.MustCompile(`^((1[5-8][0-9]|19[0-3])cm|(59|6[0-9]|7[0-6])in)$`),
 		"hcl": regexp.MustCompile(`^#[0-9a-f]{6}$`),
-		"ecl": regexp.MustCompile(`^amb|blu|brn|gry|grn|hzl|oth$`),
+		"ecl": regexp.MustCompile(`^(amb|blu|brn|gry|grn|hzl|oth)$`),
 		"pid": regexp.MustCompile(`^[0-9]{9}$`),
 		"cid": regexp.MustCompile(`.*`),
 	}

@@ -50,6 +50,17 @@ func TestInvalidPart2(t *testing.T) {
 				"byr": "2007",
 			},
 		},
+		&passport{
+			kv: map[string]string{
+				"ecl": "hzl",
+				"byr": "1971",
+				"pid": "030850749",
+				"hgt": "170in",
+				"hcl": "#ceb3a1",
+				"eyr": "2023",
+				"iyr": "2018",
+			},
+		},
 	}
 	for _, p := range data {
 		if p.isValid2() {
