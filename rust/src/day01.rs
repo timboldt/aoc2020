@@ -8,8 +8,8 @@ fn parse_input(input: &str) -> Result<Vec<i32>, ParseIntError> {
 
 #[aoc(day1, part1)]
 fn part1(entries: &[i32]) -> i32 {
-    for v1 in entries {
-        for v2 in entries {
+    for (idx1, v1) in entries.iter().enumerate() {
+        for v2 in entries.iter().skip(idx1+1) {
             if v1 + v2 == 2020 {
                 return v1 * v2;
             }
@@ -20,9 +20,9 @@ fn part1(entries: &[i32]) -> i32 {
 
 #[aoc(day1, part2)]
 fn part2(entries: &[i32]) -> i32 {
-    for v1 in entries {
-        for v2 in entries {
-            for v3 in entries {
+    for (idx1, v1) in entries.iter().enumerate() {
+        for (idx2, v2) in entries.iter().skip(idx1+1).enumerate() {
+            for v3 in entries.iter().skip(idx2+1) {
                 if v1 + v2 + v3 == 2020 {
                     return v1 * v2 * v3;
                 }
