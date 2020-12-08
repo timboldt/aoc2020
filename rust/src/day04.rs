@@ -4,16 +4,17 @@ use std::collections::HashSet;
 use std::convert::Infallible;
 
 fn is_valid_passport(raw: &str) -> bool {
-    let separator = Regex::new(r"(\s+)").expect("Invalid regex");
+    lazy_static! {
+        static ref RE: Regex = Regex::new(r"(\s+)").unwrap();
+    }
     let expected: HashSet<&str> = vec!["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
         .into_iter()
         .collect();
     let mut set = HashSet::new();
-    for kv in separator.split(raw) {
+    for kv in RE.split(raw) {
         let parts: Vec<&str> = kv.split(":").collect();
         set.insert(parts[0]);
     }
-    //println!("{:?}", set);
     set.is_superset(&expected)
 }
 
